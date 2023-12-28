@@ -46,7 +46,7 @@ exports.getCategorys = async (req, res) => {
                 sortQuery = { createdAt: -1 };
         }
         const page = parseInt(req.query.page) || 1;
-        const pageSize = parseInt(req.query.pageSize) || 3;
+        const pageSize = parseInt(req.query.pageSize) || 20;
         const skip = page * pageSize - pageSize;
         const categorys = await Category.find(filter).skip(skip).limit(pageSize).sort(sortQuery);
         const count = await Category.countDocuments(filter);
